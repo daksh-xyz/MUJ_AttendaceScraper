@@ -1,10 +1,9 @@
 # MacOS Automated Web Scraper
 
-This project is a macOS automation script that logs into MUJ slcm portal, scrapes attendance data, saves it to a CSV file, and sends a macOS notification with the attendance percentage.
+This project is a macOS automation script that logs into MUJ slcm portal, scrapes attendance data, and sends a macOS notification with the attendance percentage.
 
 ## Features
-- **Automated login**: Uses Selenium to log in to the website.
-- **Data extraction**: Scrapes attendance details and stores them in `attendance_data.csv`.
+- **Automated login**: Uses `requests` to log in to the website.
 - **macOS Notifications**: Displays attendance data as a system notification.
 - **Automated Execution**: Runs at a scheduled time using AppleScript and Automator.
 
@@ -13,7 +12,7 @@ This project is a macOS automation script that logs into MUJ slcm portal, scrape
 ### 1. Install Dependencies
 Ensure you have Python 3 and the required libraries:
 ```bash
-pip install selenium python-dotenv webdriver-manager
+pip install python-dotenv requests  bs4
 ```
 
 ### 2. Configure Credentials
@@ -44,7 +43,7 @@ Replace `your_username` and `your_password` with your actual credentials.
 6. Set to open **At Time of Event**.
 
 ## Usage
-- The script will run at the scheduled time, log in, scrape data, save it to a CSV file, and send a notification.
+- The script will run at the scheduled time, log in, scrape data and send a notification.
 - To run manually, execute:
   ```bash
   python3 attendanceScraper.py

@@ -1,6 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 import subprocess
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+USERNAME = os.getenv("USERNAME")
+PASSWORD = os.getenv("PASSWORD")
 
 # Define URLs
 LOGIN_URL = "https://mujslcm.jaipur.manipal.edu"
@@ -33,8 +40,8 @@ credentials = {
     "__RequestVerificationToken": csrf_token,
     "EmailFor": "@muj.manipal.edu",
     "LoginFor": "2",
-    "UserName": "daksh.229301282",  # Adjust based on the form field name
-    "Password": "Research@1607",
+    "UserName": USERNAME,  # Adjust based on the form field name
+    "Password": PASSWORD,
 }
 
 
