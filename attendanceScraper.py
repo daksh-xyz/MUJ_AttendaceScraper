@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import subprocess
 from dotenv import load_dotenv
 import os
+import socket
 
 load_dotenv()
 
@@ -12,6 +13,20 @@ PASSWORD = os.getenv("PASSWORD")
 # Define URLs
 LOGIN_URL = "https://mujslcm.jaipur.manipal.edu"
 ATTENDANCE_URL = "https://mujslcm.jaipur.manipal.edu/Student/Academic/GetAttendanceSummaryList"
+
+def is_connected(host="8.8.8.8", port=53, timeout=3):
+    try:
+        socket.setdefaulttimeout(timeout)
+        socket.create_connection((host, port))
+        return True
+    except OSError:
+        return False
+
+# Check internet connection
+if not is_connected():
+    print("No internet connection! Please check your network.")
+    subprocess.run(["osascript", "-e", 'display notification "No internet connection!" with title "Error"'])
+    exit()
 
 # Define headers
 headers = {
